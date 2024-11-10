@@ -6,7 +6,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: fakeshop
+    app: fake-shop
   ports:
     - protocol: TCP
       port: 80
