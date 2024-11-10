@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgredb-cm
+  namespace: shops
+data:
+  POSTGRES_DB: "fakeshop"

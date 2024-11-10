@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fakeshop-dp
+  namespace: shops
+  labels:
+    app: fake-shop
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fake-shop
+  template:
+    metadata:
+      labels:
+        app: fake-shop
+    spec:
+      containers:
+        - name: fakeshop
+          image: diegofr/fakeshop:1.0
+          envFrom:
+            - configMapRef:
+                name: fakeshop-cm
+            - secretRef:
+                name: fakeshop-secret
+          ports:
+            - containerPort: 5000

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgredb-dp
+  namespace: shops
+  labels:
+    app: fake-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      db: postgredb
+  template:
+    metadata:
+      labels:
+        db: postgredb
+    spec:
+      containers:
+        - name: postgredb
+          image: postgres:13.16
+          envFrom:
+            - configMapRef:
+                name: postgredb-cm
+            - secretRef:
+                name: postgredb-secret
+          ports:
+            - containerPort: 5432
