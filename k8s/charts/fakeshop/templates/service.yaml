@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "fakeshop.fullname" . }}
-  namespace: { .Values.namespace }}
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "fakeshop.labels" . | nindent 4 }}
 spec:

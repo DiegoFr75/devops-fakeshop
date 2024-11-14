@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "fakeshop.fullname" . }}
-  namespace: { .Values.namespace }}
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "fakeshop.labels" . | nindent 4 }}
 spec:
